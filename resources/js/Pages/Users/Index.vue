@@ -38,9 +38,8 @@ watch(
     );
 }); */
 
-function del(id) {
-    router.delete("/users/" + id);
-}
+//function del(id) {
+let del = (id) => router.delete("/users/" + id);
 </script>
 
 <template>
@@ -83,11 +82,23 @@ function del(id) {
                 </div>
             </div>
 
-            <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                <Link :href="`/users/${user.id}/edit`"> Edit </Link>
-            </div>
+            <div class="flex min-w-0 gap-x-4">
+                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                    <Link
+                        :href="`/users/${user.id}/edit`"
+                        class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500"
+                    >
+                        Edit
+                    </Link>
+                </div>
 
-            <button @click="del(user.id)">Delete</button>
+                <button
+                    @click="del(user.id)"
+                    class="bg-red-400 hover:bg-red-500 text-white py-2 px-4 rounded"
+                >
+                    Delete
+                </button>
+            </div>
         </li>
     </ul>
 
